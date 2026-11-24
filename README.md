@@ -185,5 +185,4 @@ Actual  FP   [ 747      11       3 ]
 <img src="https://github.com/Rayz4010/exoplanet-prediction/blob/main/assets/Screenshot%202025-11-22%20at%2015.10.15.png">
 
 <div align='centre'>
-Build by Rayz4010
 </div>
