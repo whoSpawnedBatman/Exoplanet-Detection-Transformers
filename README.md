@@ -1,5 +1,5 @@
 <div align="center">
-  <img width="256" height="384" alt="Exoplanet Detection" src="https://github.com/Rayz4010/exoplanet-prediction/blob/main/assets/1637006343899.png">
+  <img width="256" height="384" alt="Exoplanet Detection" src="./assets/1637006343899.png">
 
 # Exoplanet Detection Using Light Curves
 
@@ -18,7 +18,7 @@
 
  ``bash<br/>
  #Clone the project<br/>
- git clone https://github.com/Rayz4010/exoplanet-prediction.git<br/>
+ git clone https://github.com/whoSpawnedBatman/Exoplanet-Detection-Transformers.git<br/>
  cd exoplanet-detection<br/>
 
  #Install Dependencies<br/>
@@ -129,19 +129,19 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Screenshots
 
 ### **Candidate and confirmed**
- <img src="https://github.com/Rayz4010/exoplanet-prediction/blob/main/assets/candidate.png">
- <img src="https://github.com/Rayz4010/exoplanet-prediction/blob/main/assets/output.png">
+ <img src="./assets/candidate.png">
+ <img src="./assets/output.png">
 
 
 ### **Data Visualization**
  
  
 #### **Pairplot**
- <img src="https://github.com/Rayz4010/exoplanet-prediction/blob/main/assets/pairplot.png">
+ <img src="./assets/pairplot.png">
 
 
 #### **Joinplot**
- <img src="https://github.com/Rayz4010/exoplanet-prediction/blob/main/assets/joinplot.png">
+ <img src="./assets/joinplot.png">
 
 
 ### **Data Evaluation & Results**
@@ -179,10 +179,25 @@ Actual  FP   [ 747      11       3 ]
 <img src="./assets/confmat.png" alt="Confusion Matrix" width="550">
 
 ### **Output**
-<img src="https://github.com/Rayz4010/exoplanet-prediction/blob/main/assets/Screenshot%202025-11-22%20at%2015.08.23.png">
-<img src="https://github.com/Rayz4010/exoplanet-prediction/blob/main/assets/Screenshot%202025-11-22%20at%2015.08.55.png">
-<img src="https://github.com/Rayz4010/exoplanet-prediction/blob/main/assets/Screenshot%202025-11-22%20at%2015.09.59.png">
-<img src="https://github.com/Rayz4010/exoplanet-prediction/blob/main/assets/Screenshot%202025-11-22%20at%2015.10.15.png">
+<img src="./assets/Screenshot%202025-11-22%20at%2015.08.23.png">
+<img src="./assets/Screenshot%202025-11-22%20at%2015.08.55.png">
+<img src="./assets/Screenshot%202025-11-22%20at%2015.09.59.png">
+<img src="./assets/Screenshot%202025-11-22%20at%2015.10.15.png">
 
-<div align='centre'>
-</div>
+---
+
+## **Beta Architecture: Transformer Classifier**
+
+Available on the [`beta`](https://github.com/whoSpawnedBatman/Exoplanet-Detection-Transformers/tree/beta) branch is a PyTorch-based **Deep Transformer Classifier** (`TransformerClassifier`) designed to model long-range sequential temporal flux variations from the Kepler dataset (`exoTrain.csv` / `exoTest.csv`):
+
+- **Architecture Details**:
+  - **Embedding Layer**: Linear projection layer mapping input light curve flux dimensions to latent space (`d_model = 64`).
+  - **Transformer Encoder**: 2-layer `nn.TransformerEncoder` with 4 attention heads (`nhead = 4`) leveraging self-attention mechanisms to learn dependencies across the entire sequence in parallel.
+  - **Global Average Pooling**: Pools sequence representation across temporal dimensions (`mean(dim=1)`).
+  - **Classification Head**: Fully connected layer projecting pooled embeddings to target binary classes (*Planet* vs. *No Planet*).
+  - **Optimizer & Loss**: Adam optimizer (`lr=1e-4`) with Cross-Entropy Loss (`nn.CrossEntropyLoss`).
+
+To explore the Transformer implementation, switch to the `beta` branch:
+```bash
+git checkout beta
+```
