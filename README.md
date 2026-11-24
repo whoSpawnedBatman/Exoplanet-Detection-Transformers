@@ -144,10 +144,39 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
  <img src="https://github.com/Rayz4010/exoplanet-prediction/blob/main/assets/joinplot.png">
 
 
-### **Data Evaluation**
+### **Data Evaluation & Results**
 
-#### Confusion Matrix
- <img src="https://github.com/Rayz4010/exoplanet-prediction/blob/main/assets/confmat.png">
+#### **Evaluation Metrics Summary**
+The Random Forest model evaluated on the Kepler test set (1,561 samples) achieved an overall accuracy of **87.96%**:
+
+| Metric | Macro Average | Weighted Average |
+| :--- | :---: | :---: |
+| **Accuracy** | **87.96%** | **87.96%** |
+| **Precision** | **85.01%** | **88.00%** |
+| **Recall** | **83.88%** | **88.00%** |
+| **F1-Score** | **84.32%** | **88.00%** |
+
+#### **Per-Class Classification Report**
+
+| Class | Label | Precision | Recall | F1-Score | Support |
+| :--- | :--- | :---: | :---: | :---: | :---: |
+| **0** | False Positive | 0.95 | 0.98 | 0.97 | 761 |
+| **1** | Candidate | 0.77 | 0.67 | 0.72 | 336 |
+| **2** | Confirmed | 0.83 | 0.86 | 0.85 | 464 |
+| **Macro Avg** | - | 0.85 | 0.84 | 0.84 | 1561 |
+| **Weighted Avg** | - | 0.88 | 0.88 | 0.88 | 1561 |
+
+#### **Confusion Matrix**
+
+```
+                  Predicted
+               FP      CAND    CONF
+Actual  FP   [ 747      11       3 ]
+        CAND [  31     226      79 ]
+        CONF [   7      57     400 ]
+```
+
+<img src="./assets/confmat.png" alt="Confusion Matrix" width="550">
 
 ### **Output**
 <img src="https://github.com/Rayz4010/exoplanet-prediction/blob/main/assets/Screenshot%202025-11-22%20at%2015.08.23.png">
